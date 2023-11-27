@@ -1,7 +1,34 @@
+import { Card, Col, Container, Row } from 'react-bootstrap';
+import { useTranslation } from "react-i18next";
 import { LoginForm } from '../LoginForm.jsx';
+import routes from "../../routes.js";
+import avatar from '../../assets/avatar.jpg';
 
 export const LoginPage = () => {
+  const { t } = useTranslation();
   return (
-   <LoginForm />
+    <Container fluid className="h-100 w-75">
+      <Row className="justify-content-center align-content-center h-100">
+        <Col className="col-12 col-md-8 col-xxl-6 pt-5">
+          <Card className="shadow-sm">
+            <Card.Body className="row p-3">
+            <Col className="col-5 col-md-5 p-5 d-flex justify-content-center align-items-center">
+                <Card.Img 
+                  className="rounded-circle" 
+                  src={avatar} />
+              </Col>
+              <LoginForm />
+            </Card.Body>
+            <Card.Footer className="p-4">
+              <Card.Text className="text-center">
+                <span>Нет аккаунта?</span>
+                <Card.Link href={routes.signup} className="p-2">{t('form.signUp')}</Card.Link>
+              </Card.Text>
+            </Card.Footer>
+          </Card>
+        </Col>
+      </Row>
+    </Container>
   );
 };
+
