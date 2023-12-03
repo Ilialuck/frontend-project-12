@@ -21,7 +21,7 @@ export const LoginPage = () => {
             </Card.Body>
             <Card.Footer className="p-4">
               <Card.Text className="text-center">
-                <span>Нет аккаунта?</span>
+                <span>{t('form.noAccount')}</span>
                 <Card.Link href={routes.signup} className="p-2">{t('form.signUp')}</Card.Link>
               </Card.Text>
             </Card.Footer>
