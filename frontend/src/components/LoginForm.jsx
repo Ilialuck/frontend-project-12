@@ -1,8 +1,8 @@
 import { Form, Button, FloatingLabel } from 'react-bootstrap';
-import { useRef, useEffect, useState, useContext } from 'react';
+import { useState } from 'react';
 import { useFormik } from 'formik';
 import { useTranslation } from 'react-i18next';
-import axios, { AxiosError } from 'axios';
+import { AxiosError } from 'axios';
 import { useLoginFormSchema } from '../schemas';
 import useAuth from '../hooks/useAuth';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -13,6 +13,7 @@ export const LoginForm = () => {
   const { t } = useTranslation();
   const auth = useAuth();
   const [authFailed, setAuthFailed] = useState(false);
+
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -22,25 +23,22 @@ export const LoginForm = () => {
       password: '',
     },
     validationSchema: loginFormSchema,
-    onSubmit: async (values, { setSubmitting }) => {
-      setAuthFailed(false);
+    onSubmit: async ({username, password}) => {
       try {
-        //перенести хранение и запрос в провайдер? 
-        const { data } = await axios.post(routes.server.login, values);
-        localStorage.setItem('user', JSON.stringify(data));
-        console.log(localStorage.user);
-        auth.logIn();
-        const { from } = location.state || { from: { pathname: routes.root } };
+        await auth.logIn(username, password);
+        const { from } = location.state || {
+          from: { pathname: routes.root },
+        };
         navigate(from);
-      }catch(error) {
-        setSubmitting(false);
-        if (error instanceof  AxiosError && error.response.status === 401) {
+      }
+      catch (error) {
+        if (error instanceof AxiosError && error.response.status === 401) {
           setAuthFailed(true);
           return;
         }
-        throw(error);
+        throw(error)
       }
-    },
+    }
   });
     return (
         <Form onSubmit={formik.handleSubmit} className="col-7 col-md-7">
