@@ -4,16 +4,18 @@ import routes from '../routes.js';
 import { LoginPage } from './pages/LoginPage.jsx';
 import { ErrorPage } from './pages/ErrorPage.jsx';
 import { ChatPage } from './pages/ChatPage.jsx';
+import { Navbar } from './Navbar.jsx';
 import useAuth from '../hooks/useAuth.jsx';
 
 const App = () => {
-  const { loggedIn } = useAuth();
-  const Redirect = loggedIn ? <ChatPage /> : <Navigate to={routes.login} />
+  const auth = useAuth();
+  const Redirect = auth.user ? <ChatPage /> : <Navigate to={routes.login} />
 
   return (
     <BrowserRouter>
+    <Navbar/>
         <Routes>
-           <Route path={routes.root} element={ Redirect }/>
+          <Route path={routes.root} element={ Redirect }/>
           <Route path={routes.login} element={<LoginPage />}/>
           <Route path={routes.others} element={<ErrorPage />}/>
         </Routes>

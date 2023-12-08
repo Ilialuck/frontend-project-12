@@ -1,7 +1,9 @@
+// eslint-disable-next-line
 export default {
     translation : {
         navigation : {
-            main: 'На главную'
+            main: 'На главную',
+            logOut: 'Выйти',
         },
         errors : {
             error: 'Ошибка',
