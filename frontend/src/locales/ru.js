@@ -20,5 +20,13 @@ export default {
               password: 'Пароль',
             },
         },
+        channels: {
+            channels: 'Каналы',
+
+        },
+        messages: {
+            messages: 'Сообщения',
+
+        },
     },
 };
