@@ -5,23 +5,21 @@ import { setCurrentChannel } from '../store/ChannelsSlice';
 
 export const Channels = () => {
     const { t } = useTranslation();
-    const currentChannelID = useSelector((state) => state.channels.currentChannelID);
+    const { channels, currentChannelId} = useSelector((state) => state.channels)
     const dispatch = useDispatch();
-    const channels = useSelector((state) => state.channels.channels);
     const handleChannelClick = (id) => dispatch(setCurrentChannel(id));
   
     const channelsList = channels.map((channel) => (
-        <li className="nav-item w-100">
+        <li className="nav-item w-100" key={channel.id}>
             <Button
-                className={`w-100 rounded-0 text-start btn ${channel.id === currentChannelID ? 'btn-primary' : 'btn-light'}`}
-                key={channel.id}
+                className={`w-100 rounded-0 text-start btn ${channel.id === currentChannelId ? 'btn-primary' : 'btn-light'}`}
+
                 onClick={() => handleChannelClick(channel.id)}
             >
                 <span className="me-1">#</span>
                 {channel.name}
             </Button>
         </li>
-
     ));
 
     return (

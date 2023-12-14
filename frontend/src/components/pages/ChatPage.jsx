@@ -1,10 +1,12 @@
 import { useDispatch} from 'react-redux';
+import axios from 'axios';
+import { useEffect } from 'react';
+import { useAuth } from '../../hooks';
+import { getChannels } from '../../store/ChannelsSlice';
+import { getMessages } from '../../store/MessagesSlice';
+import routes from '../../routes';
 import { Channels } from '../Channels';
 import { Messages } from '../Messages';
-import { useEffect } from 'react';
-import { getChannelsData } from '../../helpers';
-import { useAuth } from '../../hooks';
-
 
 export const ChatPage = () => {
   const dispatch = useDispatch();
@@ -15,18 +17,23 @@ export const ChatPage = () => {
   console.log(token);
   
   useEffect(() => {
-    const getData = async () => {
+    const getInitialData = async () => {
+      const { token } = JSON.parse(localStorage.getItem('user'));
       try {
-        dispatch(getChannelsData(dispatch, header));
+        const { data } = await axios.get(routes.server.data, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        console.log(data);
+        dispatch(getChannels(data));
+        dispatch(getMessages(data));
+      } catch(e) {
+        throw e;
       }
-      catch (error) {
-        console.log(error);
-        auth.logOut();
-      }
-    }
-    getData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    };
+    getInitialData();
+  }, [dispatch]);
 
   return (
     <div className="container h-100 my-4 overflow-hidden rounded shadow">

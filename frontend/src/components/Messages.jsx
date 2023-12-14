@@ -5,12 +5,14 @@ import { MessagesForm } from './MessagesForm';
 
 export const Messages = () => {
   const messagesRef = useRef(null);
-  const { channels, currentChannelID } = useSelector((state) => state.channels);
-  const currentChannel = channels.filter((channel) => currentChannelID === channel.id)[0];
+  const { channels, currentChannelId } = useSelector((state) => state.channels);
+  const currentChannel = channels.filter((channel) => currentChannelId === channel.id)[0];
+  console.log(currentChannel);
   const currentName = currentChannel ? currentChannel.name : '';
+  console.log(currentName)
   const { t } = useTranslation();
   const messages = useSelector((state) => state.messages.messages);
-  const currentMessages = messages.filter((message) => message.channelId === currentChannelID);
+  const currentMessages = messages.filter((message) => message.channelId === currentChannelId);
 
   const messagesList = currentMessages.map((message) => (
     <div className='text-break mb-2' key={message.id}>

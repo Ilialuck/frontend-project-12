@@ -12,14 +12,14 @@ export const MessagesForm = () => {
   const { t } = useTranslation();
   const auth = useAuth();
   const socket = useSocket();
-  const { currentChannelID } = useSelector((state) => state.channels);
+  const { currentChannelId } = useSelector((state) => state.channels);
   const formik = useFormik({
     initialValues: { messageBody: '' },
     onSubmit: ({ messageBody }, { resetForm }) => {
       try {
         socket.newMessage({
           body: messageBody,
-          channelId: currentChannelID,
+          channelId: currentChannelId,
           username: auth.user.username,
         });
         resetForm();
@@ -35,7 +35,7 @@ export const MessagesForm = () => {
     if (inputRef.current) {
       inputRef.current.focus();
     }
-  }, [currentChannelID]);
+  }, [currentChannelId]);
 
   useEffect(() => {
     if (formik.values.messageBody === '') {
