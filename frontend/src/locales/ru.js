@@ -26,7 +26,14 @@ export default {
         },
         messages: {
             messages: 'Сообщения',
-
+            inputMessage: 'Введите сообщение',
+            send: 'Отправить',           
         },
+        messagesCounter: {
+            messages_zero: '{{count}} сообщений',
+            messages_one: '{{count}} сообщение',
+            messages_few: '{{count}} сообщения',
+            messages_many: '{{count}} сообщений',
+          },
     },
 };

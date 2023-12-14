@@ -1,6 +1,6 @@
 import { Container, Button, Navbar as NavbarComponent } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
-import useAuth from '../hooks/useAuth';
+import { useAuth } from '../hooks';
 
 export const Navbar = () => {
   const auth = useAuth();

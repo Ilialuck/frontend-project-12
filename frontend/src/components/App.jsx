@@ -5,14 +5,15 @@ import { LoginPage } from './pages/LoginPage.jsx';
 import { ErrorPage } from './pages/ErrorPage.jsx';
 import { ChatPage } from './pages/ChatPage.jsx';
 import { Navbar } from './Navbar.jsx';
-import useAuth from '../hooks/useAuth.jsx';
+import { useAuth } from '../hooks/index.js';
 
 const App = () => {
   const auth = useAuth();
   const Redirect = auth.user ? <ChatPage /> : <Navigate to={routes.login} />
 
   return (
-    <BrowserRouter>
+    <div className="d-flex flex-column h-100">
+      <BrowserRouter>
     <Navbar/>
         <Routes>
           <Route path={routes.root} element={ Redirect }/>
@@ -20,6 +21,8 @@ const App = () => {
           <Route path={routes.others} element={<ErrorPage />}/>
         </Routes>
     </ BrowserRouter>
+    </div>
+    
   );
 }
 

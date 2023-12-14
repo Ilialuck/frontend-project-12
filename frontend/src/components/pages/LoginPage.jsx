@@ -9,9 +9,9 @@ export const LoginPage = () => {
   return (
     <Container fluid className="h-100 w-75">
       <Row className="justify-content-center align-content-center h-100">
-        <Col className="col-12 col-md-8 col-xxl-6 pt-5">
+        <Col className="col-12 col-md-8 col-xxl-6">
           <Card className="shadow-sm">
-            <Card.Body className="row p-3">
+            <Card.Body className="card-body row p-5">
             <Col className="col-5 col-md-5 p-5 d-flex justify-content-center align-items-center">
                 <Card.Img 
                   className="rounded-circle" 

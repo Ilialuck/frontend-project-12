@@ -1,9 +1,10 @@
 import { useDispatch} from 'react-redux';
-import useAuth from '../../hooks/useAuth';
 import { Channels } from '../Channels';
 import { Messages } from '../Messages';
 import { useEffect } from 'react';
 import { getChannelsData } from '../../helpers';
+import { useAuth } from '../../hooks';
+
 
 export const ChatPage = () => {
   const dispatch = useDispatch();
@@ -28,11 +29,10 @@ export const ChatPage = () => {
   }, []);
 
   return (
-    
     <div className="container h-100 my-4 overflow-hidden rounded shadow">
       <div className="row h-100 bg-white flex-md-row">
         <Channels />
-        <Messages />
+        <Messages/>
       </div>
     </div>
   );

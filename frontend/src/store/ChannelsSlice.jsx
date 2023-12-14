@@ -12,7 +12,7 @@ const channelsSlice = createSlice({
   reducers: {
     getChannels(state, { payload }) {
       state.channels = [...payload.channels];
-      state.currentChannelId = payload.currentChannelId;
+      state.currentChannelID = payload.currentChannelID;
     },
     setCurrentChannel(state, { payload }) {
       state.currentChannelID = payload;

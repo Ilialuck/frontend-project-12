@@ -4,8 +4,8 @@ import { useFormik } from 'formik';
 import { useTranslation } from 'react-i18next';
 import { AxiosError } from 'axios';
 import { useLoginFormSchema } from '../helpers';
-import useAuth from '../hooks/useAuth';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { useAuth } from '../hooks';
 import routes from '../routes';
 
 export const LoginForm = () => {
@@ -40,7 +40,7 @@ export const LoginForm = () => {
     }
   });
     return (
-        <Form onSubmit={formik.handleSubmit} className="col-7 col-md-7">
+        <Form onSubmit={formik.handleSubmit} className="col-12 col-md-6 mt-3 mt-mb-0">
           <h1 className="text-center m-3">{t('form.signIn')}</h1>
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <FloatingLabel controlId={"formBasicEmail"} label={t('form.fields.username')}>

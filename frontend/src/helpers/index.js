@@ -1,8 +1,9 @@
 import * as Yup from "yup";
 import { useTranslation } from "react-i18next";
-import { getChannels } from '../store/ChannelsSlice'
 import axios from 'axios';
 import routes from "../routes";
+import { getMessages } from "../store/MessagesSlice";
+import { getChannels } from '../store/ChannelsSlice';
 
 export const useLoginFormSchema = () => {
   const { t } = useTranslation();
@@ -17,4 +18,5 @@ export const getChannelsData  = (dispatch, header) => async () => {
     headers: header,
   });
   dispatch(getChannels(data));
+  dispatch(getMessages(data));
 };
