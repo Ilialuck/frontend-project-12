@@ -1,10 +1,9 @@
 import { createContext, useMemo, useCallback } from 'react';
-import { useTranslation } from 'react-i18next';
+
 
 export const SocketContext = createContext({});
 
 const SocketProvider = ({ socket, children }) => {
-  const { t } = useTranslation();
 
   const newMessage = useCallback(async (messageData) => {
     socket.emit('newMessage', messageData, (response) => {
@@ -13,9 +12,13 @@ const SocketProvider = ({ socket, children }) => {
       }
       console.log('socket - OK')
     });
-  }, [socket, t]);
+  }, [socket]);
 
-  const context = useMemo(() => ({ newMessage }), [newMessage]);
+  const newChannel = useCallback((newChannelName) => {
+    socket.emit('newChannel', { name: newChannelName });
+  }, [socket]);
+
+  const context = useMemo(() => ({ newMessage, newChannel }), [newMessage, newChannel]);
 
   return (
     <SocketContext.Provider value={context}>{children}</SocketContext.Provider>

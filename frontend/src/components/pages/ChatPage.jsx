@@ -1,18 +1,21 @@
-import { useDispatch} from 'react-redux';
 import axios from 'axios';
+import { useDispatch, useSelector} from 'react-redux';
 import { useEffect } from 'react';
+import routes from '../../routes';
 import { useAuth } from '../../hooks';
 import { getChannels } from '../../store/ChannelsSlice';
 import { getMessages } from '../../store/MessagesSlice';
-import routes from '../../routes';
+import getModalComponent from '../Modals';
 import { Channels } from '../Channels';
 import { Messages } from '../Messages';
+
 
 export const ChatPage = () => {
   const dispatch = useDispatch();
   const auth = useAuth();
   const { token } = auth.user;
   const header = token ? { Authorization: `Bearer ${token}` } : {};
+  const type = useSelector((state) => state.modals.type);
   console.log(header);
   console.log(token);
   
@@ -37,9 +40,10 @@ export const ChatPage = () => {
 
   return (
     <div className="container h-100 my-4 overflow-hidden rounded shadow">
-      <div className="row h-100 bg-white flex-md-row">
+      <div className="row h-100 bg-light flex-md-row">
         <Channels />
         <Messages/>
+        {getModalComponent(type)}
       </div>
     </div>
   );

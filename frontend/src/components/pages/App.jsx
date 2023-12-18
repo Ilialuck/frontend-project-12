@@ -1,11 +1,11 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import routes from '../routes.js';
-import { LoginPage } from './pages/LoginPage.jsx';
-import { ErrorPage } from './pages/ErrorPage.jsx';
-import { ChatPage } from './pages/ChatPage.jsx';
-import { Navbar } from './Navbar.jsx';
-import { useAuth } from '../hooks/index.js';
+import routes from '../../routes.js';
+import { LoginPage } from './LoginPage.jsx';
+import { ErrorPage } from './ErrorPage.jsx';
+import { ChatPage } from './ChatPage.jsx';
+import { Navbar } from '../Navbar.jsx';
+import { useAuth } from '../../hooks/index.js';
 
 const App = () => {
   const auth = useAuth();
@@ -14,7 +14,7 @@ const App = () => {
   return (
     <div className="d-flex flex-column h-100">
       <BrowserRouter>
-    <Navbar/>
+        <Navbar />
         <Routes>
           <Route path={routes.root} element={ Redirect }/>
           <Route path={routes.login} element={<LoginPage />}/>

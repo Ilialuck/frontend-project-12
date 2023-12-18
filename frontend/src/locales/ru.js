@@ -5,11 +5,16 @@ export default {
             main: 'На главную',
             logOut: 'Выйти',
         },
+        validations: {
+            required: 'Обязательное поле',
+            loginFail: 'Неверное имя пользователя или пароль',
+            minSymbols: 'Не менее трех символов',
+            maxSymbols: 'Максимум 20 символов',
+            uniquely: 'Значение должно быть уникальным',
+        },
         errors : {
             error: 'Ошибка',
             404: 'Ошибка 404 - Страница не найдена',
-            required: 'Обязательное поле',
-            loginFail: 'Неверное имя пользователя или пароль',
         },
         form: {
             signIn: 'Войти',
@@ -35,5 +40,11 @@ export default {
             messages_few: '{{count}} сообщения',
             messages_many: '{{count}} сообщений',
           },
+        modals: {
+            addChannel: 'Добавить канал',
+            channelName: 'Название канала',
+            send: 'Отправить',
+            cancel: 'Отменить',
+        }
     },
 };
