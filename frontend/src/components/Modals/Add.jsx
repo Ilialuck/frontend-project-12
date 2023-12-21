@@ -16,6 +16,7 @@ export const Add = () => {
   // eslint-disable-next-line arrow-body-style
   const isOpened = useSelector((state) => state.modals.isOpened);
   const hendleClose = () => dispatch(closeModal());
+ 
 
   useEffect(() => {
     if (inputRef.current) {
@@ -30,6 +31,7 @@ export const Add = () => {
     onSubmit: async ({ name }, { resetForm }) => {
         try {
           await socket.newChannel(name);
+          console.log(name);
           console.log('канал добавлен');
           resetForm();
         } catch (error) {
