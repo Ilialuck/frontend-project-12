@@ -10,7 +10,7 @@ export const useLoginFormSchema = () => {
   });
 };
 
-export const useAddChannelSchema = () => {
+export const useChannelsNamesSchema = () => {
   const existingChannels = useSelector((state) => {
     return state.channels.channels.map((channel) => channel.name);
   });

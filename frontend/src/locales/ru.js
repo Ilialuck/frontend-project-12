@@ -45,6 +45,14 @@ export default {
             channelName: 'Название канала',
             send: 'Отправить',
             cancel: 'Отменить',
+            removeChannel: 'Удалить канал',
+            removeConfirm: 'Уверены?',
+            remove: 'Удалить',
+            rename: 'Переименовать канал',
+            dropdown: {
+                remove: 'Удалить',
+                rename: 'Переименовать',
+            },
         }
     },
 };

@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { Button } from 'react-bootstrap'
+import { Button, Dropdown } from 'react-bootstrap'
 import { useTranslation } from "react-i18next";
 import { setCurrentChannel } from '../store/ChannelsSlice';
 import { useRef, useEffect, useState } from "react";
@@ -11,29 +11,60 @@ export const Channels = () => {
     const { channels, currentChannelId} = useSelector((state) => state.channels)
     const dispatch = useDispatch();
     const addButtonRef = useRef(null);
-    const [prevChannelsLength, setPrevChannelsLength] = useState(null);
+    const [channelsLength, setchannelsLength] = useState(null);
 
     const handleChannelClick = (id) => dispatch(setCurrentChannel(id));
     const hendleAddChannel = () => dispatch(openModal({ type: 'addChannel' }));
-
+    const handleRemoveChannel = (id) => dispatch(openModal({ type: 'removeChannel', extra: { channelId: id } }));
+    const handleRenameChannel = (id) => dispatch(openModal({ type: 'renameChannel', extra: { channelId: id } }));
+    
     useEffect(() => {
-        if (channels.length > prevChannelsLength && prevChannelsLength && channels.length !== 2) {
+        if (channels.length > channelsLength && channelsLength && channels.length !== 2) {
           const currentId = channels[channels.length - 1].id;
           dispatch(setCurrentChannel(currentId));
         }
-        setPrevChannelsLength(channels.length);
+        setchannelsLength(channels.length);
         addButtonRef.current.focus();
-      }, [channels, dispatch, prevChannelsLength, addButtonRef]);
+      }, [channels, dispatch, channelsLength, addButtonRef]);
 
     const channelsList = channels.map((channel) => (
         <li className="nav-item w-100" key={channel.id}>
-            <Button
-                className={`w-100 rounded-0 text-start btn ${channel.id === currentChannelId ? 'btn-primary' : 'btn-light'}`}
+            {channel.removable ? (
+            <div role="group" className="d-flex dropdown btn-group">
+              <Button
+                className="w-100 rounded-0 text-start text-truncate "
+                variant={channel.id === currentChannelId ? 'secondary' : 'light'}
                 onClick={() => handleChannelClick(channel.id)}
-            >
+              >
                 <span className="me-1">#</span>
                 {channel.name}
+              </Button>
+              <Dropdown>
+                <Dropdown.Toggle
+                  id={`dropdownToggle_${channel.id}`}
+                  type="button"
+                  aria-expanded="false"
+                  className="flex-grow-0 dropdown-toggle dropdown-toggle-split "
+                  variant={channel.id === currentChannelId ? 'secondary' : 'light'}
+                >
+                  <span className="visually-hidden">{t('dropdown.control')}</span>
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  <Dropdown.Item onClick={() => handleRemoveChannel(channel.id)}>{t('modals.dropdown.remove')}</Dropdown.Item>
+                  <Dropdown.Item onClick={() => handleRenameChannel(channel.id)}>{t('modals.dropdown.rename')}</Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+            </div>
+          ) : (
+            <Button
+              className="w-100 rounded-0 text-start"
+              variant={channel.id === currentChannelId ? 'secondary' : 'light'}
+              onClick={() => handleChannelClick(channel.id)}
+            >
+              <span className="me-1">#</span>
+              {channel.name}
             </Button>
+          )}
         </li>
     ));
 

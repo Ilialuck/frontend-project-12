@@ -8,7 +8,7 @@ import AuthProvider from './context/Auth.js';
 import SocketProvider from './context/Socket.js';
 import store from '../src/store/index.js';
 import { addMessage } from './store/MessagesSlice.jsx';
-import { addChannel } from './store/ChannelsSlice.jsx';
+import { addChannel, removeChannel, renameChannel } from './store/ChannelsSlice.jsx';
 
 const init = async () => {
   const i18n = i18next.createInstance();
@@ -16,6 +16,8 @@ const init = async () => {
 
   socket.on('newMessage', (payload) => store.dispatch(addMessage(payload)));
   socket.on('newChannel', (payload) => store.dispatch(addChannel(payload)));
+  socket.on('removeChannel', (payload) => store.dispatch(removeChannel(payload)));
+  socket.on('renameChannel', (payload) => store.dispatch(renameChannel(payload)));
 
   await i18n
     .use(initReactI18next)

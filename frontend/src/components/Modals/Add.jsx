@@ -5,17 +5,17 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { useSocket } from '../../hooks';
 import { closeModal } from '../../store/ModalSlice';
-import { useAddChannelSchema } from '../../helpers';
+import { useChannelsNamesSchema } from '../../helpers';
 
 export const Add = () => {
   const { t } = useTranslation();
   const socket = useSocket();
   const inputRef = useRef(null);
   const dispatch = useDispatch();
-  const addChannelSchema = useAddChannelSchema();
+  const addChannelSchema = useChannelsNamesSchema();
   // eslint-disable-next-line arrow-body-style
   const isOpened = useSelector((state) => state.modals.isOpened);
-  const hendleClose = () => dispatch(closeModal());
+  const handleClose = () => dispatch(closeModal());
  
 
   useEffect(() => {
@@ -37,14 +37,14 @@ export const Add = () => {
         } catch (error) {
           console.log(error);
         } finally {
-          hendleClose();
+          handleClose();
         }
   }
 });
     
   return (
     <Modal show={isOpened} centered>
-      <Modal.Header closeButton onHide={hendleClose}>
+      <Modal.Header closeButton onHide={handleClose}>
         <Modal.Title>{t('modals.addChannel')}</Modal.Title>
       </Modal.Header>
 
@@ -69,7 +69,7 @@ export const Add = () => {
             </Form.Control.Feedback>
           </Form.Group>
           <Modal.Footer>
-            <Button variant="secondary" onClick={hendleClose}>{t('modals.cancel')}</Button>
+            <Button variant="secondary" onClick={handleClose}>{t('modals.cancel')}</Button>
             <Button type="submit" variant="primary" disabled={formik.isSubmitting}>{t('modals.send')}</Button>
           </Modal.Footer>
         </Form>
