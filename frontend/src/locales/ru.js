@@ -11,6 +11,9 @@ export default {
             minSymbols: 'Не менее трех символов',
             maxSymbols: 'Максимум 20 символов',
             uniquely: 'Значение должно быть уникальным',
+            passwordConfirm: 'Пароли должны совпадать',
+            minPasswordSymbols: 'Пароль минимум 6 символов',
+            userExists: 'Пользователь с таким именем уже существует',
         },
         errors : {
             error: 'Ошибка',
@@ -19,10 +22,12 @@ export default {
         form: {
             signIn: 'Войти',
             signUp: 'Регистрация',
+            signUpBtn: 'Зарегистрироваться',
             noAccount: 'Нет аккаунта?',
             fields: {
               username: 'Имя пользователя',
               password: 'Пароль',
+              passwordConfirmation: 'Повторите пароль',
             },
         },
         channels: {

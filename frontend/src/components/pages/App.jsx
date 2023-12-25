@@ -6,6 +6,7 @@ import { ErrorPage } from './ErrorPage.jsx';
 import { ChatPage } from './ChatPage.jsx';
 import { Navbar } from '../Navbar.jsx';
 import { useAuth } from '../../hooks/index.js';
+import { RegistrationPage } from './RegistrationPage.jsx';
 
 const App = () => {
   const auth = useAuth();
@@ -17,6 +18,7 @@ const App = () => {
         <Navbar />
         <Routes>
           <Route path={routes.root} element={ Redirect }/>
+          <Route path={routes.signup} element={<RegistrationPage />} />
           <Route path={routes.login} element={<LoginPage />}/>
           <Route path={routes.others} element={<ErrorPage />}/>
         </Routes>
