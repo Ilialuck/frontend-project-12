@@ -2,6 +2,7 @@ import { useFormik } from 'formik';
 import { Form, Button } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import * as yup from 'yup';
+import filter from 'leo-profanity';
 import { useSelector } from 'react-redux';
 import { useRef, useEffect } from 'react';
 import { useAuth, useSocket } from '../hooks/index';
@@ -16,9 +17,11 @@ export const MessagesForm = () => {
   const formik = useFormik({
     initialValues: { messageBody: '' },
     onSubmit: ({ messageBody }, { resetForm }) => {
+      filter.loadDictionary('ru');
+      const cleanedMessage = filter.clean(messageBody);
       try {
         socket.newMessage({
-          body: messageBody,
+          body: cleanedMessage,
           channelId: currentChannelId,
           username: auth.user.username,
         });
