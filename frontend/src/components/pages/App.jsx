@@ -1,5 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import routes from '../../routes.js';
 import { LoginPage } from './LoginPage.jsx';
 import { ErrorPage } from './ErrorPage.jsx';
@@ -22,6 +24,18 @@ const App = () => {
           <Route path={routes.login} element={<LoginPage />}/>
           <Route path={routes.others} element={<ErrorPage />}/>
         </Routes>
+        <ToastContainer
+          position="top-center"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="dark"
+        />
     </ BrowserRouter>
     </div>
     

@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useEffect, useRef } from 'react';
+import { toast } from 'react-toastify';
 import { useRegistrationSchema } from '../helpers';
 import routes from '../routes';
 import { useAuth } from '../hooks';
@@ -38,7 +39,7 @@ export const RegistrationForm = () => {
             username: t('validations.userExists'),
           });
         } else {
-          console.error(error);
+          toast.error(t('notifications.errors.regFail'))
         }
       }
     },

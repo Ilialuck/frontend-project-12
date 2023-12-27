@@ -3,6 +3,7 @@ import { useFormik } from 'formik';
 import { Modal, Form, Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
+import { toast } from 'react-toastify';
 import { closeModal } from '../../store/ModalSlice';
 import { useSocket } from '../../hooks';
 import { useChannelsNamesSchema } from '../../helpers';
@@ -24,10 +25,10 @@ export const Rename = () => {
     onSubmit: async ({ name }) => {
       try {
         await socket.renameChannel(channelId, name);
-        console.log('имя канала изменено')
+        toast.success(t('notifications.renameChannel'));
         dispatch(closeModal());
       } catch (error) {
-        console.log(error);
+        toast.error(t('notifications.errors.renameChannelError'));
       }
     },
   });

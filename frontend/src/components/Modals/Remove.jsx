@@ -1,6 +1,7 @@
 import { Modal, Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
+import { toast } from 'react-toastify';
 import { useSocket } from '../../hooks';
 import { closeModal } from '../../store/ModalSlice';
 
@@ -14,9 +15,10 @@ export const Remove = () => {
   const handleRemoveChannel = async () => {
     try {
       sokcet.removeChannel(channelId);
+      toast.success(t('notifications.removeChannel'));
       dispatch(closeModal());
     } catch (error) {
-      console.log(error);
+      toast.error(t('notifications.errors.removeChannelError'))
     }
   };
 

@@ -4,6 +4,7 @@ import { Modal, Button, Form } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { useSocket } from '../../hooks';
+import { toast } from 'react-toastify';
 import { closeModal } from '../../store/ModalSlice';
 import { useChannelsNamesSchema } from '../../helpers';
 
@@ -31,11 +32,10 @@ export const Add = () => {
     onSubmit: async ({ name }, { resetForm }) => {
         try {
           await socket.newChannel(name);
-          console.log(name);
-          console.log('канал добавлен');
+          toast.success(t('notifications.addChannel'));
           resetForm();
         } catch (error) {
-          console.log(error);
+          toast.success(t('notifications.errors.addChannelError'));
         } finally {
           handleClose();
         }

@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useFormik } from 'formik';
 import { useTranslation } from 'react-i18next';
 import { AxiosError } from 'axios';
+import { toast } from 'react-toastify';
 import { useLoginFormSchema } from '../helpers';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../hooks';
@@ -35,7 +36,9 @@ export const LoginForm = () => {
           setAuthFailed(true);
           return;
         }
-        throw(error)
+        else {
+          toast.error(t('notifications.errors.loginFail'));
+        }
       }
     }
   });

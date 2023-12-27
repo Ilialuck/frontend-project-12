@@ -58,6 +58,19 @@ export default {
                 remove: 'Удалить',
                 rename: 'Переименовать',
             },
+        },
+        notifications: {
+            addChannel: 'Канал добавлен!',
+            removeChannel: 'Канал удален!',
+            renameChannel: 'Канал переименован!',
+            errors: {
+                addChannelError: 'Ошибка: канал не добавлен!',
+                removeChannelError: 'Ошибка: канал не удален!',
+                renameChannelError: 'Ошибка: канал не переименован!',
+                loadDataError: 'Возникла проблема при загрузке данных',
+                loginFail: 'Возникла ошибка авторизации',
+                regFail: 'Возникла ошибка при регистрации',
+            },
         }
     },
 };
