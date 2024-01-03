@@ -4,6 +4,7 @@ import { Modal, Form, Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
+import { useRollbar } from '@rollbar/react';
 import { closeModal } from '../../store/ModalSlice';
 import { useSocket } from '../../hooks';
 import { useChannelsNamesSchema } from '../../helpers';
@@ -11,6 +12,7 @@ import { useChannelsNamesSchema } from '../../helpers';
 export const Rename = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
+  const rollbar = useRollbar();
   const socket = useSocket();
   const inputRef = useRef(null);
   const channelId = useSelector((state) => state.modals.extra.channelId);
@@ -29,6 +31,7 @@ export const Rename = () => {
         dispatch(closeModal());
       } catch (error) {
         toast.error(t('notifications.errors.renameChannelError'));
+        rollbar.error('RenameChannel', error);
       }
     },
   });

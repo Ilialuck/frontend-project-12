@@ -3,6 +3,7 @@ import { Form, Button } from 'react-bootstrap';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { useRollbar } from '@rollbar/react';
 import { useEffect, useRef } from 'react';
 import { toast } from 'react-toastify';
 import { useRegistrationSchema } from '../helpers';
@@ -19,6 +20,7 @@ export const RegistrationForm = () => {
 
   const { t } = useTranslation();
   const auth = useAuth();
+  const rollbar = useRollbar();
   const navigate = useNavigate();
   const registrationSchema = useRegistrationSchema();
   const formik = useFormik({
@@ -40,6 +42,7 @@ export const RegistrationForm = () => {
           });
         } else {
           toast.error(t('notifications.errors.regFail'))
+          rollbar.error('Registration', error);
         }
       }
     },

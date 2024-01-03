@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import { useFormik } from 'formik';
 import { Modal, Button, Form } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
+import { useRollbar } from '@rollbar/react';
 import { useTranslation } from 'react-i18next';
 import { useSocket } from '../../hooks';
 import { toast } from 'react-toastify';
@@ -11,6 +12,7 @@ import { useChannelsNamesSchema } from '../../helpers';
 export const Add = () => {
   const { t } = useTranslation();
   const socket = useSocket();
+  const rollbar = useRollbar();
   const inputRef = useRef(null);
   const dispatch = useDispatch();
   const addChannelSchema = useChannelsNamesSchema();
@@ -35,7 +37,8 @@ export const Add = () => {
           toast.success(t('notifications.addChannel'));
           resetForm();
         } catch (error) {
-          toast.success(t('notifications.errors.addChannelError'));
+          toast.error(t('notifications.errors.addChannelError'));
+          rollbar.error('AddChannel', error);
         } finally {
           handleClose();
         }
