@@ -58,7 +58,7 @@ export const MessagesForm = () => {
             ref={inputRef}
             name="messageBody"
             autoComplete="off"
-            aria-label={'newMessage'}
+            aria-label="newMessage"
             placeholder={t('messages.inputMessage')}
             className="border-0 p-0 ps-2"
             onChange={formik.handleChange}
@@ -66,7 +66,7 @@ export const MessagesForm = () => {
             disabled={formik.isSubmitting}
           />
           <Button type="submit" variant="light" className="border-0" disabled={formik.isSubmitting}>
-            <SendIcon/>
+            <SendIcon />
             <span className="visually-hidden">{t('messages.send')}</span>
           </Button>
         </Form.Group>

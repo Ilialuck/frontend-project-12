@@ -9,18 +9,17 @@ export const Messages = () => {
   const currentChannel = channels.filter((channel) => currentChannelId === channel.id)[0];
   console.log(currentChannel);
   const currentName = currentChannel ? currentChannel.name : '';
-  console.log(currentName)
+  console.log(currentName);
   const { t } = useTranslation();
   const messages = useSelector((state) => state.messages.messages);
   const currentMessages = messages.filter((message) => message.channelId === currentChannelId);
 
   const messagesList = currentMessages.map((message) => (
-    <div className='text-break mb-2' key={message.id}>
+    <div className="text-break mb-2" key={message.id}>
       <b>{message.username}</b>
       {`: ${message.body}`}
     </div>
   ));
-
 
   return (
     <div className="col p-0 h-100">
@@ -34,6 +33,6 @@ export const Messages = () => {
         </div>
         <MessagesForm />
       </div>
-     </div>
+    </div>
   );
 };

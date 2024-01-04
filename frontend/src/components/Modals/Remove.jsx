@@ -20,7 +20,7 @@ export const Remove = () => {
       toast.success(t('notifications.removeChannel'));
       dispatch(closeModal());
     } catch (error) {
-      toast.error(t('notifications.errors.removeChannelError'))
+      toast.error(t('notifications.errors.removeChannelError'));
       rollbar.error('RemoveChannel', error);
     }
   };

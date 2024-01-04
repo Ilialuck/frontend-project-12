@@ -6,7 +6,7 @@ export const Navbar = () => {
   const auth = useAuth();
   const { t } = useTranslation();
   return (
-    <NavbarComponent expand="lg" className="shadow-sm bg-light" id='myclass'>
+    <NavbarComponent expand="lg" className="shadow-sm bg-light" id="myclass">
       <Container>
         <NavbarComponent.Brand href="/"> Hexlet Chat </NavbarComponent.Brand>
         { auth.user && <Button onClick={() => auth.logOut()} variant="primary">{t('navigation.logOut')}</Button> }

@@ -23,7 +23,7 @@ export const Rename = () => {
   const formik = useFormik({
     initialValues: { name: prevChannelName },
     validationSchema: renameChannelSchema,
-    
+
     onSubmit: async ({ name }) => {
       try {
         await socket.renameChannel(channelId, name);
@@ -74,5 +74,3 @@ export const Rename = () => {
     </Modal>
   );
 };
-
-

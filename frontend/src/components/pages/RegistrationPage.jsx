@@ -1,6 +1,6 @@
+import { useTranslation } from 'react-i18next';
 import { RegistrationForm } from '../RegistrationForm';
 import avatarReg from '../../assets/avatarReg.jpg';
-import { useTranslation } from 'react-i18next';
 
 export const RegistrationPage = () => {
   const { t } = useTranslation();
@@ -16,7 +16,7 @@ export const RegistrationPage = () => {
                 className="rounded-circle"
                 alt={t('form.signUp')}
               />
-              <RegistrationForm/>
+              <RegistrationForm />
             </div>
           </div>
         </div>

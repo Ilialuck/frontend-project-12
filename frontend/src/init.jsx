@@ -7,7 +7,7 @@ import App from './components/pages/App';
 import resources from './locales/index.js';
 import AuthProvider from './context/Auth.js';
 import SocketProvider from './context/Socket.js';
-import store from '../src/store/index.js';
+import store from './store/index.js';
 import { addMessage } from './store/MessagesSlice.jsx';
 import { addChannel, removeChannel, renameChannel } from './store/ChannelsSlice.jsx';
 import rollbarConfig from './rollbarConfig.js';
@@ -20,7 +20,6 @@ const init = async () => {
   socket.on('newChannel', (payload) => store.dispatch(addChannel(payload)));
   socket.on('removeChannel', (payload) => store.dispatch(removeChannel(payload)));
   socket.on('renameChannel', (payload) => store.dispatch(renameChannel(payload)));
-
 
   await i18n
     .use(initReactI18next)

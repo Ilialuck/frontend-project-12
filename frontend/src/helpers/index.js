@@ -1,6 +1,6 @@
-import * as Yup from "yup";
-import { useTranslation } from "react-i18next";
-import { useSelector } from "react-redux";
+import * as Yup from 'yup';
+import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
 
 export const useLoginFormSchema = () => {
   const { t } = useTranslation();
@@ -14,27 +14,26 @@ export const useRegistrationSchema = () => {
   const { t } = useTranslation();
   return Yup.object().shape({
     username: Yup
-        .string()
-        .required(t('validations.required'))
-        .min(3, t('validations.minSymbols'))
-        .max(20, t('validations.maxSymbolss')),
-      password: Yup
-        .string()
-        .required(t('validations.required'))
-        .min(6, t('validations.minPasswordSymbols')),
-      confirmPassword: Yup
-        .string()
-        .oneOf([Yup.ref('password')], t('validations.passwordConfirm'))
-        .required(t('validations.required')),
-  })
+      .string()
+      .required(t('validations.required'))
+      .min(3, t('validations.minSymbols'))
+      .max(20, t('validations.maxSymbolss')),
+    password: Yup
+      .string()
+      .required(t('validations.required'))
+      .min(6, t('validations.minPasswordSymbols')),
+    confirmPassword: Yup
+      .string()
+      .oneOf([Yup.ref('password')], t('validations.passwordConfirm'))
+      .required(t('validations.required')),
+  });
 };
 
 export const useChannelsNamesSchema = () => {
-  const existingChannels = useSelector((state) => {
-    return state.channels.channels.map((channel) => channel.name);
-  });
+  // eslint-disable-next-line max-len
+  const existingChannels = useSelector((state) => state.channels.channels.map((channel) => channel.name));
   const { t } = useTranslation();
-  return  Yup.object().shape({
+  return Yup.object().shape({
     name: Yup
       .string()
       .required(t('validations.required'))

@@ -7,7 +7,6 @@ const initialState = {
 };
 const defaultChannelId = 1;
 
-
 const channelsSlice = createSlice({
   name: 'channels',
   initialState,
@@ -34,5 +33,7 @@ const channelsSlice = createSlice({
   },
 });
 
-export const { getChannels, setCurrentChannel, addChannel, removeChannel, renameChannel } = channelsSlice.actions;
+export const {
+  getChannels, setCurrentChannel, addChannel, removeChannel, renameChannel,
+} = channelsSlice.actions;
 export default channelsSlice.reducer;

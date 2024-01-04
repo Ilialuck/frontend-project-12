@@ -1,7 +1,9 @@
-import { Card, Col, Container, Row } from 'react-bootstrap';
-import { useTranslation } from "react-i18next";
+import {
+  Card, Col, Container, Row,
+} from 'react-bootstrap';
+import { useTranslation } from 'react-i18next';
 import { LoginForm } from '../LoginForm.jsx';
-import routes from "../../routes.js";
+import routes from '../../routes.js';
 import avatar from '../../assets/avatar.jpg';
 
 export const LoginPage = () => {
@@ -12,10 +14,11 @@ export const LoginPage = () => {
         <Col className="col-12 col-md-8 col-xxl-6">
           <Card className="shadow-sm">
             <Card.Body className="card-body row p-5">
-            <Col className="col-5 col-md-5 p-5 d-flex justify-content-center align-items-center">
-                <Card.Img 
-                  className="rounded-circle" 
-                  src={avatar} />
+              <Col className="col-5 col-md-5 p-5 d-flex justify-content-center align-items-center">
+                <Card.Img
+                  className="rounded-circle"
+                  src={avatar}
+                />
               </Col>
               <LoginForm />
             </Card.Body>
@@ -31,4 +34,3 @@ export const LoginPage = () => {
     </Container>
   );
 };
-
