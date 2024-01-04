@@ -1,5 +1,15 @@
+install:
+	npm ci
+
 start:
-	npm run start
+	npm start
+
+build:
+	rm -rf build
+	npm run build
 
 lint:
-	npx eslint --no-eslintrc --config .eslintrc.json ..
+	npx eslint .
+
+lint-fix:
+	npx eslint . --fix
