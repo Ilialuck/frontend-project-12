@@ -8,13 +8,13 @@ Hexlet Chat - it's the Slack chat analog. Sign up and correspond in existing cha
 
 ## Technology stack
 The following technologies were used for creation:
-React
-React-Bootstrap
-Redux, Redux Toolkit
-Formik
-React router
-Web sockets
-Rollbar
+- React
+- React-Bootstrap
+- Redux, Redux Toolkit
+- Formik
+- React router
+- Web sockets
+- Rollbar
 
 ## Installation
 ```
