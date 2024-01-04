@@ -1,5 +1,5 @@
 start-backend:
-	npm run start
+	npx start-server
 
 start-frontend:
 	make -C frontend start
@@ -8,7 +8,7 @@ start:
 	make start-backend & make start-frontend
 
 build:
-	npm run build --if-present
+	make -C frontend build
 
 install:
 	npm ci
