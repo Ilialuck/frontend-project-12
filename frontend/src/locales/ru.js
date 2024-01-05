@@ -7,13 +7,13 @@ export default {
     },
     validations: {
       required: 'Обязательное поле',
-      loginFail: 'Неверное имя пользователя или пароль',
+      loginFail: 'Неверные имя пользователя или пароль',
       minSymbols: 'Не менее трех символов',
       maxSymbols: 'Максимум 20 символов',
       minMaxSymbols: 'От 3 до 20 символов',
       uniquely: 'Значение должно быть уникальным',
       passwordConfirm: 'Пароли должны совпадать',
-      minPasswordSymbols: 'Пароль минимум 6 символов',
+      minPasswordSymbols: 'Не менее 6 символов',
       userExists: 'Пользователь с таким именем уже существует',
     },
     errors: {
@@ -38,7 +38,7 @@ export default {
     },
     messages: {
       messages: 'Сообщения',
-      inputMessage: 'Введите сообщение',
+      inputMessage: 'Новое сообщение',
       send: 'Отправить',
     },
     messagesCounter: {
@@ -49,7 +49,7 @@ export default {
     },
     modals: {
       addChannel: 'Добавить канал',
-      channelName: 'Название канала',
+      channelName: 'Имя канала',
       send: 'Отправить',
       cancel: 'Отменить',
       removeChannel: 'Удалить канал',
@@ -62,9 +62,9 @@ export default {
       },
     },
     notifications: {
-      addChannel: 'Канал добавлен!',
-      removeChannel: 'Канал удален!',
-      renameChannel: 'Канал переименован!',
+      addChannel: 'Канал создан',
+      removeChannel: 'Канал удалён',
+      renameChannel: 'Канал переименован',
       errors: {
         addChannelError: 'Ошибка: канал не добавлен!',
         removeChannelError: 'Ошибка: канал не удален!',
