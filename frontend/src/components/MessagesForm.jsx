@@ -17,7 +17,7 @@ export const MessagesForm = () => {
   const formik = useFormik({
     initialValues: { messageBody: '' },
     onSubmit: ({ messageBody }, { resetForm }) => {
-      filter.loadDictionary('ru');
+      // filter.loadDictionary('ru');
       const cleanedMessage = filter.clean(messageBody);
       try {
         socket.newMessage({
