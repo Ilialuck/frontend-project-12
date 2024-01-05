@@ -57,6 +57,7 @@ export default {
       remove: 'Удалить',
       rename: 'Переименовать канал',
       dropdown: {
+        control: 'Управление каналом',
         remove: 'Удалить',
         rename: 'Переименовать',
       },

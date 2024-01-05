@@ -47,7 +47,7 @@ export const Channels = () => {
               className="flex-grow-0 dropdown-toggle dropdown-toggle-split "
               variant={channel.id === currentChannelId ? 'secondary' : 'light'}
             >
-              <span className="visually-hidden">{t('dropdown.control')}</span>
+              <span className="visually-hidden">{t('modals.dropdown.control')}</span>
             </Dropdown.Toggle>
             <Dropdown.Menu>
               <Dropdown.Item onClick={() => handleRemoveChannel(channel.id)}>{t('modals.dropdown.remove')}</Dropdown.Item>

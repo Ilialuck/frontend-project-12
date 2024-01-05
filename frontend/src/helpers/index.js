@@ -37,8 +37,8 @@ export const useChannelsNamesSchema = () => {
     name: Yup
       .string()
       .required(t('validations.required'))
-      .min(3, t('validations.minSymbols'))
-      .max(20, t('validations.maxSymbols'))
+      .min(3, t('validations.minMaxSymbols'))
+      .max(20, t('validations.minMaxSymbols'))
       .test('is-unique', t('validations.uniquely'), (value) => !existingChannels.includes(value)),
   });
 };
