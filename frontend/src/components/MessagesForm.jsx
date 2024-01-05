@@ -58,7 +58,7 @@ export const MessagesForm = () => {
             ref={inputRef}
             name="messageBody"
             autoComplete="off"
-            aria-label="newMessage"
+            aria-label={t('messages.inputMessage')}
             placeholder={t('messages.inputMessage')}
             className="border-0 p-0 ps-2"
             onChange={formik.handleChange}
