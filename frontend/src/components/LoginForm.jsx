@@ -72,7 +72,7 @@ export const LoginForm = () => {
             onChange={formik.handleChange}
             isInvalid={authFailed}
           />
-          <Form.Control.Feedback type="invalid">{t('errors.loginFail')}</Form.Control.Feedback>
+          <Form.Control.Feedback type="invalid">{t('validations.loginFail')}</Form.Control.Feedback>
         </FloatingLabel>
       </Form.Group>
       <Button variant="btn btn-outline-primary" className="col-6 col-md-12" type="submit">
