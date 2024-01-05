@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useRollbar } from '@rollbar/react';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
+import filter from 'leo-profanity';
 import { useSocket } from '../../hooks';
 import { closeModal } from '../../store/ModalSlice';
 import { useChannelsNamesSchema } from '../../helpers';
@@ -31,8 +32,9 @@ export const Add = () => {
     validationSchema: addChannelSchema,
 
     onSubmit: async ({ name }, { resetForm }) => {
+      const cleanedName = filter.clean(name);
       try {
-        await socket.newChannel(name);
+        await socket.newChannel(cleanedName);
         toast.success(t('notifications.addChannel'));
         resetForm();
       } catch (error) {
