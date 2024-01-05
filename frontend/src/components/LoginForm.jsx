@@ -47,14 +47,14 @@ export const LoginForm = () => {
     <Form onSubmit={formik.handleSubmit} className="col-12 col-md-6 mt-3 mt-mb-0">
       <h1 className="text-center m-3">{t('form.signIn')}</h1>
       <Form.Group className="mb-3" controlId="formBasicEmail">
-        <FloatingLabel controlId="formBasicEmail" label={t('form.fields.username')}>
+        <FloatingLabel controlId="formBasicEmail" label={t('form.fields.username2')}>
           <Form.Control
             className={formik.errors.username && formik.touched.username ? 'is-invalid' : ''}
             type="text"
             name="username"
             autoComplete="username"
             required
-            placeholder={t('form.fields.username')}
+            placeholder={t('form.fields.username2')}
             value={formik.values.username}
             onChange={formik.handleChange}
             isInvalid={authFailed}

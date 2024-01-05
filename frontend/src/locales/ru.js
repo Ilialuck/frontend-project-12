@@ -26,8 +26,9 @@ export default {
       noAccount: 'Нет аккаунта?',
       fields: {
         username: 'Имя пользователя',
+        username2: 'Ваш ник',
         password: 'Пароль',
-        passwordConfirmation: 'Повторите пароль',
+        passwordConfirmation: 'Подтвердите пароль',
       },
     },
     channels: {
