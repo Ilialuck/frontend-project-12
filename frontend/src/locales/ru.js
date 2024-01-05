@@ -10,6 +10,7 @@ export default {
       loginFail: 'Неверное имя пользователя или пароль',
       minSymbols: 'Не менее трех символов',
       maxSymbols: 'Максимум 20 символов',
+      minMaxSymbols: 'От 3 до 20 символов',
       uniquely: 'Значение должно быть уникальным',
       passwordConfirm: 'Пароли должны совпадать',
       minPasswordSymbols: 'Пароль минимум 6 символов',

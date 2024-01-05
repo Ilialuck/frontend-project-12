@@ -16,8 +16,8 @@ export const useRegistrationSchema = () => {
     username: Yup
       .string()
       .required(t('validations.required'))
-      .min(3, t('validations.minSymbols'))
-      .max(20, t('validations.maxSymbolss')),
+      .min(3, t('validations.minMaxSymbols'))
+      .max(20, t('validations.minMaxSymbols')),
     password: Yup
       .string()
       .required(t('validations.required'))
