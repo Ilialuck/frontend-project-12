@@ -1,43 +1,38 @@
-import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { useRollbar } from '@rollbar/react';
-import routes from '../../routes';
+import { toast } from 'react-toastify';
+import { useTranslation } from 'react-i18next';
 import { useAuth } from '../../hooks';
-import { getChannels } from '../../store/ChannelsSlice';
-import { getMessages } from '../../store/MessagesSlice';
 import getModalComponent from '../Modals';
 import { Channels } from '../Channels';
 import { Messages } from '../Messages';
+import { getChannelsData } from '../../helpers';
 
 export const ChatPage = () => {
   const dispatch = useDispatch();
   const auth = useAuth();
-  const rollbar = useRollbar();
+  const { t } = useTranslation();
   const { token } = auth.user;
   const header = token ? { Authorization: `Bearer ${token}` } : {};
   const type = useSelector((state) => state.modals.type);
-  console.log(header);
-  console.log(token);
 
   useEffect(() => {
-    const getInitialData = async () => {
-      // eslint-disable-next-line no-shadow
-      const { token } = JSON.parse(localStorage.getItem('user'));
+    const fetchData = async () => {
       try {
-        const { data } = await axios.get(routes.server.data, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        console.log(data);
-        dispatch(getChannels(data));
-        dispatch(getMessages(data));
+        dispatch(getChannelsData(dispatch, header));
       } catch (error) {
-        rollbar.error('ChatPage', error);
+        if (error.response && error.response.status === 401) {
+          toast.error(t('notifications.errors.loginFail'));
+          auth.logOut();
+        } else {
+          toast.error(t('notifications.errors.loadDataError'));
+        }
       }
     };
-    getInitialData();
+
+    fetchData();
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch]);
 
   return (

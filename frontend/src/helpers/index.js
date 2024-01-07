@@ -1,6 +1,10 @@
 import * as Yup from 'yup';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
+import axios from 'axios';
+import { getChannels } from '../store/ChannelsSlice';
+import { getMessages } from '../store/MessagesSlice';
+import routes from '../routes';
 
 export const useLoginFormSchema = () => {
   const { t } = useTranslation();
@@ -41,4 +45,11 @@ export const useChannelsNamesSchema = () => {
       .max(20, t('validations.minMaxSymbols'))
       .test('is-unique', t('validations.uniquely'), (value) => !existingChannels.includes(value)),
   });
+};
+export const getChannelsData = (dispatch, header) => async () => {
+  const { data } = await axios.get(routes.server.data, {
+    headers: header,
+  });
+  dispatch(getChannels(data, header));
+  dispatch(getMessages(data, header));
 };
