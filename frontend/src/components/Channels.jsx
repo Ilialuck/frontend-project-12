@@ -39,7 +39,7 @@ export const Channels = () => {
         <div role="group" className="d-flex dropdown btn-group">
           <Button
             className="w-100 rounded-0 text-start text-truncate"
-            variant={channel.id === currentChannelId && channelCreator === auth.user.username ? 'secondary' : 'light'}
+            variant={(channel.id === currentChannelId && channelCreator === auth.user.username) ? 'secondary' : 'light'}
             onClick={() => handleChannelClick(channel.id)}
           >
             <span className="me-1">#</span>
