@@ -64,7 +64,7 @@ export const Channels = () => {
       ) : (
         <Button
           className="w-100 rounded-0 text-start"
-          variant={channel.id === currentChannelId ? 'secondary' : 'light'}
+          variant={(channel.id === currentChannelId && channelCreator === auth.user.username) ? 'secondary' : 'light'}
           onClick={() => handleChannelClick(channel.id)}
         >
           <span className="me-1">#</span>
