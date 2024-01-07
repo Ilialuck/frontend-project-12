@@ -17,7 +17,7 @@ export const ChatPage = () => {
   const type = useSelector((state) => state.modals.type);
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchChannelsData = async () => {
       try {
         dispatch(getChannelsData(dispatch, header));
       } catch (error) {
@@ -30,7 +30,7 @@ export const ChatPage = () => {
       }
     };
 
-    fetchData();
+    fetchChannelsData();
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch]);

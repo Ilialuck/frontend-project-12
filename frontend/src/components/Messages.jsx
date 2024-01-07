@@ -7,9 +7,7 @@ export const Messages = () => {
   const messagesRef = useRef(null);
   const { channels, currentChannelId } = useSelector((state) => state.channels);
   const currentChannel = channels.filter((channel) => currentChannelId === channel.id)[0];
-  console.log(currentChannel);
   const currentName = currentChannel ? currentChannel.name : '';
-  console.log(currentName);
   const { t } = useTranslation();
   const messages = useSelector((state) => state.messages.messages);
   const currentMessages = messages.filter((message) => message.channelId === currentChannelId);

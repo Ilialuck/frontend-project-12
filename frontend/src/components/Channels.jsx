@@ -5,14 +5,15 @@ import { useRef, useEffect, useState } from 'react';
 import { setCurrentChannel } from '../store/ChannelsSlice';
 import { openModal } from '../store/ModalSlice';
 import { AddChannelIcon } from '../assets/AddChannelIcon';
+import { useAuth } from '../hooks';
 
 export const Channels = () => {
   const { t } = useTranslation();
   const { channels, currentChannelId } = useSelector((state) => state.channels);
   const dispatch = useDispatch();
+  const auth = useAuth();
   const addButtonRef = useRef(null);
   const [channelsLength, setchannelsLength] = useState(null);
-
   const handleChannelClick = (id) => dispatch(setCurrentChannel(id));
   const hendleAddChannel = () => dispatch(openModal({ type: 'addChannel' }));
   const handleRemoveChannel = (id) => dispatch(openModal({ type: 'removeChannel', extra: { channelId: id } }));
@@ -27,13 +28,18 @@ export const Channels = () => {
     addButtonRef.current.focus();
   }, [channels, dispatch, channelsLength, addButtonRef]);
 
+  const currentUser = JSON.parse(localStorage.getItem('user'));
+  const channelCreator = currentUser.username;
+  console.log(channelCreator);
+  console.log(auth.user.username);
+
   const channelsList = channels.map((channel) => (
     <li className="nav-item w-100" key={channel.id}>
       {channel.removable ? (
         <div role="group" className="d-flex dropdown btn-group">
           <Button
             className="w-100 rounded-0 text-start text-truncate"
-            variant={channel.id === currentChannelId ? 'secondary' : 'light'}
+            variant={channel.id === currentChannelId && channelCreator === auth.user.username ? 'secondary' : 'light'}
             onClick={() => handleChannelClick(channel.id)}
           >
             <span className="me-1">#</span>
