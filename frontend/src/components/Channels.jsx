@@ -5,15 +5,14 @@ import { useRef, useEffect, useState } from 'react';
 import { setCurrentChannel } from '../store/ChannelsSlice';
 import { openModal } from '../store/ModalSlice';
 import { AddChannelIcon } from '../assets/AddChannelIcon';
-import { useAuth } from '../hooks';
 
 export const Channels = () => {
   const { t } = useTranslation();
   const { channels, currentChannelId } = useSelector((state) => state.channels);
   const dispatch = useDispatch();
-  const auth = useAuth();
   const addButtonRef = useRef(null);
   const [channelsLength, setchannelsLength] = useState(null);
+
   const handleChannelClick = (id) => dispatch(setCurrentChannel(id));
   const hendleAddChannel = () => dispatch(openModal({ type: 'addChannel' }));
   const handleRemoveChannel = (id) => dispatch(openModal({ type: 'removeChannel', extra: { channelId: id } }));
@@ -28,18 +27,13 @@ export const Channels = () => {
     addButtonRef.current.focus();
   }, [channels, dispatch, channelsLength, addButtonRef]);
 
-  const currentUser = JSON.parse(localStorage.getItem('user'));
-  const channelCreator = currentUser.username;
-  console.log(channelCreator);
-  console.log(auth.user.username);
-
   const channelsList = channels.map((channel) => (
     <li className="nav-item w-100" key={channel.id}>
       {channel.removable ? (
         <div role="group" className="d-flex dropdown btn-group">
           <Button
-            className="w-100 rounded-0 text-start text-truncate"
-            variant={(channel.id === currentChannelId && channelCreator === auth.user.username) ? 'secondary' : 'light'}
+            className="w-100 rounded-0 text-start text-truncate "
+            variant={channel.id === currentChannelId ? 'secondary' : 'light'}
             onClick={() => handleChannelClick(channel.id)}
           >
             <span className="me-1">#</span>
@@ -50,10 +44,10 @@ export const Channels = () => {
               id={`dropdownToggle_${channel.id}`}
               type="button"
               aria-expanded="false"
-              className="flex-grow-0 dropdown-toggle dropdown-toggle-split"
+              className="flex-grow-0 dropdown-toggle dropdown-toggle-split "
               variant={channel.id === currentChannelId ? 'secondary' : 'light'}
             >
-              <span className="visually-hidden">{t('modals.dropdown.control')}</span>
+              <span className="visually-hidden">{t('dropdown.control')}</span>
             </Dropdown.Toggle>
             <Dropdown.Menu>
               <Dropdown.Item onClick={() => handleRemoveChannel(channel.id)}>{t('modals.dropdown.remove')}</Dropdown.Item>
@@ -64,7 +58,7 @@ export const Channels = () => {
       ) : (
         <Button
           className="w-100 rounded-0 text-start"
-          variant={(channel.id === currentChannelId && channelCreator === auth.user.username) ? 'secondary' : 'light'}
+          variant={channel.id === currentChannelId ? 'secondary' : 'light'}
           onClick={() => handleChannelClick(channel.id)}
         >
           <span className="me-1">#</span>

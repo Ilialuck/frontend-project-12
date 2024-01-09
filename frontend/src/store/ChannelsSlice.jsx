@@ -20,7 +20,6 @@ const channelsSlice = createSlice({
     },
     addChannel(state, { payload }) {
       state.channels.push(payload);
-      console.log(payload);
     },
     removeChannel(state, { payload }) {
       if (state.currentChannelId === payload.id) state.currentChannelId = defaultChannelId;
