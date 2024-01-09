@@ -32,7 +32,7 @@ export const Channels = () => {
       {channel.removable ? (
         <div role="group" className="d-flex dropdown btn-group">
           <Button
-            className="w-100 rounded-0 text-start text-truncate "
+            className="w-100 rounded-0 text-start text-truncate"
             variant={channel.id === currentChannelId ? 'secondary' : 'light'}
             onClick={() => handleChannelClick(channel.id)}
           >
@@ -44,10 +44,10 @@ export const Channels = () => {
               id={`dropdownToggle_${channel.id}`}
               type="button"
               aria-expanded="false"
-              className="flex-grow-0 dropdown-toggle dropdown-toggle-split "
+              className="flex-grow-0 dropdown-toggle dropdown-toggle-split"
               variant={channel.id === currentChannelId ? 'secondary' : 'light'}
             >
-              <span className="visually-hidden">{t('dropdown.control')}</span>
+              <span className="visually-hidden">{t('modals.dropdown.control')}</span>
             </Dropdown.Toggle>
             <Dropdown.Menu>
               <Dropdown.Item onClick={() => handleRemoveChannel(channel.id)}>{t('modals.dropdown.remove')}</Dropdown.Item>
