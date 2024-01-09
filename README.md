@@ -7,6 +7,8 @@
 
 [Hexlet chat](https://ilialuck-frontend-project-12.onrender.com)
 
+# Чат (Slack)
+
 ## Description
 Hexlet Chat - it's the Slack chat analog. Sign up and correspond in existing channels or create your own channels
 

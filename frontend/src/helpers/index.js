@@ -39,7 +39,7 @@ export const useChannelsNamesSchema = () => {
   const { t } = useTranslation();
   return Yup.object().shape({
     name: Yup
-      .string()
+      .string().trim()
       .required(t('validations.required'))
       .min(3, t('validations.minMaxSymbols'))
       .max(20, t('validations.minMaxSymbols'))
