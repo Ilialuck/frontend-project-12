@@ -14,6 +14,7 @@ export const MessagesForm = () => {
   const auth = useAuth();
   const socket = useSocket();
   const { currentChannelId } = useSelector((state) => state.channels);
+
   const formik = useFormik({
     initialValues: { messageBody: '' },
     onSubmit: ({ messageBody }, { resetForm }) => {

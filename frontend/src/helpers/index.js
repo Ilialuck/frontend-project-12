@@ -50,6 +50,6 @@ export const getChannelsData = (dispatch, header) => async () => {
   const { data } = await axios.get(routes.server.data, {
     headers: header,
   });
-  dispatch(getChannels(data, header));
-  dispatch(getMessages(data, header));
+  dispatch(getChannels(data));
+  dispatch(getMessages(data));
 };

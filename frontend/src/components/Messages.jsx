@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import { MessagesForm } from './MessagesForm';
 
 export const Messages = () => {
@@ -11,6 +11,15 @@ export const Messages = () => {
   const { t } = useTranslation();
   const messages = useSelector((state) => state.messages.messages);
   const currentMessages = messages.filter((message) => message.channelId === currentChannelId);
+
+  useEffect(() => {
+    if (messagesRef.current && window.scrollY === 0) {
+      messagesRef.current.scrollTo({
+        top: messagesRef.current.scrollHeight,
+        behavior: 'smooth',
+      });
+    }
+  }, [messages]);
 
   const messagesList = currentMessages.map((message) => (
     <div className="text-break mb-2" key={message.id}>
