@@ -1,8 +1,11 @@
 import { createContext, useMemo, useCallback } from 'react';
+import { useDispatch } from 'react-redux';
+import { setCurrentChannel } from '../store/ChannelsSlice';
 
 export const SocketContext = createContext({});
 
 const SocketProvider = ({ socket, children }) => {
+  const dispatch = useDispatch();
   const newMessage = useCallback(async (messageData) => {
     socket.emit('newMessage', messageData, (response) => {
       if (response.status !== 'ok') {
@@ -12,9 +15,10 @@ const SocketProvider = ({ socket, children }) => {
     });
   }, [socket]);
 
-  const newChannel = useCallback((newChannelName) => {
-    socket.emit('newChannel', { name: newChannelName });
-  }, [socket]);
+  const newChannel = useCallback(async (newChannelName) => {
+    const { data } = await socket.emitWithAck('newChannel', { name: newChannelName });
+    dispatch(setCurrentChannel(data.id));
+  }, [dispatch, socket]);
 
   const removeChannel = useCallback((channelId) => {
     socket.emit('removeChannel', { id: channelId });
