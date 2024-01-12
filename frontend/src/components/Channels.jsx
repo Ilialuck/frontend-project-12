@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect } from 'react';
 import { setCurrentChannel } from '../store/ChannelsSlice';
 import { openModal } from '../store/ModalSlice';
 import { AddChannelIcon } from '../assets/AddChannelIcon';
@@ -12,7 +12,6 @@ export const Channels = () => {
   const dispatch = useDispatch();
   const addButtonRef = useRef(null);
   const channelsListRef = useRef(null);
-  const [channelsLength, setchannelsLength] = useState(null);
 
   const handleChannelClick = (id) => dispatch(setCurrentChannel(id));
   const hendleAddChannel = () => dispatch(openModal({ type: 'addChannel' }));
@@ -30,15 +29,6 @@ export const Channels = () => {
       }
     }
   }, [channels, currentChannelId]);
-
-  useEffect(() => {
-    if (channels.length > channelsLength && channelsLength && channels.length !== 2) {
-      const currentId = channels[channels.length - 1].id;
-      dispatch(setCurrentChannel(currentId));
-    }
-    setchannelsLength(channels.length);
-    addButtonRef.current.focus();
-  }, [channels, dispatch, channelsLength, addButtonRef]);
 
   return (
     <div className="col-4 col-md-2 border-end px-0 bg-light flex-column h-100 d-flex">

@@ -16,7 +16,7 @@ const SocketProvider = ({ socket, children }) => {
   }, [socket]);
 
   const newChannel = useCallback(async (newChannelName) => {
-    const { data } = await socket.timeout(3000).emitWithAck('newChannel', { name: newChannelName });
+    const { data } = await socket.emitWithAck('newChannel', { name: newChannelName });
     dispatch(setCurrentChannel(data.id));
   }, [dispatch, socket]);
 

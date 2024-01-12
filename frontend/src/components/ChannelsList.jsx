@@ -23,7 +23,7 @@ export const ChannelsList = ({
               </Button>
               <Dropdown>
                 <Dropdown.Toggle
-                  id={`dropdownToggle_${channel.id}`}
+                  id={channel.id}
                   type="button"
                   aria-expanded="false"
                   className="flex-grow-0 dropdown-toggle dropdown-toggle-split "

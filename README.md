@@ -1,13 +1,13 @@
+# Чат (Slack analog)
+
+[Hexlet chat](https://ilialuck-frontend-project-12.onrender.com)
+
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/Ilialuck/frontend-project-12/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/Ilialuck/frontend-project-12/actions)
 
 [![linter](https://github.com/Ilialuck/frontend-project-12/workflows/linter/badge.svg)](https://github.com/Ilialuck/frontend-project-12/actions)
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/2784be070cd2884165d7/maintainability)](https://codeclimate.com/github/Ilialuck/frontend-project-12/maintainability)
-
-[Hexlet chat](https://ilialuck-frontend-project-12.onrender.com)
-
-# Чат (Slack)
 
 ## Description
 Hexlet Chat - it's the Slack chat analog. Sign up and correspond in existing channels or create your own channels
