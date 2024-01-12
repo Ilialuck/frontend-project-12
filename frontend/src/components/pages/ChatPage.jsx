@@ -4,11 +4,11 @@ import { toast } from 'react-toastify';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../../hooks';
 import getModalComponent from '../Modals';
-import { Channels } from '../Channels';
-import { Messages } from '../Messages';
+import Channels from '../Channels';
+import Messages from '../Messages';
 import { getChannelsData } from '../../helpers';
 
-export const ChatPage = () => {
+const ChatPage = () => {
   const dispatch = useDispatch();
   const auth = useAuth();
   const { t } = useTranslation();
@@ -45,3 +45,4 @@ export const ChatPage = () => {
     </div>
   );
 };
+export default ChatPage;

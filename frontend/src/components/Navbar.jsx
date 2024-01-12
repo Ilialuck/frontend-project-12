@@ -2,7 +2,7 @@ import { Container, Button, Navbar as NavbarComponent } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../hooks';
 
-export const Navbar = () => {
+const Navbar = () => {
   const auth = useAuth();
   const { t } = useTranslation();
   return (
@@ -14,3 +14,4 @@ export const Navbar = () => {
     </NavbarComponent>
   );
 };
+export default Navbar;

@@ -10,7 +10,7 @@ import { useRegistrationSchema } from '../helpers';
 import routes from '../routes';
 import { useAuth } from '../hooks';
 
-export const RegistrationForm = () => {
+const RegistrationForm = () => {
   const inputName = useRef(null);
   useEffect(() => {
     if (inputName.current) {
@@ -115,3 +115,4 @@ export const RegistrationForm = () => {
     </Form>
   );
 };
+export default RegistrationForm;

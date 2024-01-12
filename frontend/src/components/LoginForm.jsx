@@ -10,7 +10,7 @@ import { useLoginFormSchema } from '../helpers';
 import { useAuth } from '../hooks';
 import routes from '../routes';
 
-export const LoginForm = () => {
+const LoginForm = () => {
   const loginFormSchema = useLoginFormSchema();
   const { t } = useTranslation();
   const auth = useAuth();
@@ -81,3 +81,4 @@ export const LoginForm = () => {
     </Form>
   );
 };
+export default LoginForm;

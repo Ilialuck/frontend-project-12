@@ -3,10 +3,10 @@ import { useTranslation } from 'react-i18next';
 import { useRef, useEffect } from 'react';
 import { setCurrentChannel } from '../store/ChannelsSlice';
 import { openModal } from '../store/ModalSlice';
-import { AddChannelIcon } from '../assets/AddChannelIcon';
-import { ChannelsList } from './ChannelsList';
+import AddChannelIcon from '../assets/AddChannelIcon';
+import ChannelsList from './ChannelsList';
 
-export const Channels = () => {
+const Channels = () => {
   const { t } = useTranslation();
   const { channels, currentChannelId } = useSelector((state) => state.channels);
   const dispatch = useDispatch();
@@ -56,3 +56,4 @@ export const Channels = () => {
     </div>
   );
 };
+export default Channels;

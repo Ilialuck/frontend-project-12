@@ -6,9 +6,9 @@ import filter from 'leo-profanity';
 import { useSelector } from 'react-redux';
 import { useRef, useEffect } from 'react';
 import { useAuth, useSocket } from '../hooks/index';
-import { SendIcon } from '../assets/SendIcon';
+import SendIcon from '../assets/SendIcon';
 
-export const MessagesForm = () => {
+const MessagesForm = () => {
   const inputRef = useRef(null);
   const { t } = useTranslation();
   const auth = useAuth();
@@ -75,3 +75,4 @@ export const MessagesForm = () => {
     </div>
   );
 };
+export default MessagesForm;

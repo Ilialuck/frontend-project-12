@@ -6,7 +6,7 @@ import { useRollbar } from '@rollbar/react';
 import { useSocket } from '../../hooks';
 import { closeModal } from '../../store/ModalSlice';
 
-export const Remove = () => {
+const Remove = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const rollbar = useRollbar();
@@ -39,3 +39,4 @@ export const Remove = () => {
     </Modal>
   );
 };
+export default Remove;

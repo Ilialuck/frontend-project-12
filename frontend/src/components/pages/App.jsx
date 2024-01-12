@@ -5,12 +5,12 @@ import {
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import routes from '../../routes.js';
-import { LoginPage } from './LoginPage.jsx';
-import { ErrorPage } from './ErrorPage.jsx';
-import { ChatPage } from './ChatPage.jsx';
-import { Navbar } from '../Navbar.jsx';
+import LoginPage from './LoginPage.jsx';
+import ErrorPage from './ErrorPage.jsx';
+import ChatPage from './ChatPage.jsx';
+import Navbar from '../Navbar.jsx';
 import { useAuth } from '../../hooks/index.js';
-import { RegistrationPage } from './RegistrationPage.jsx';
+import RegistrationPage from './RegistrationPage.jsx';
 
 const App = () => {
   const auth = useAuth();

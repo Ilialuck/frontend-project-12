@@ -1,9 +1,9 @@
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { useRef, useEffect } from 'react';
-import { MessagesForm } from './MessagesForm';
+import MessagesForm from './MessagesForm';
 
-export const Messages = () => {
+const Messages = () => {
   const messagesRef = useRef(null);
   const { channels, currentChannelId } = useSelector((state) => state.channels);
   const currentChannel = channels.filter((channel) => currentChannelId === channel.id)[0];
@@ -43,3 +43,4 @@ export const Messages = () => {
     </div>
   );
 };
+export default Messages;

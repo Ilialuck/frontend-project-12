@@ -2,7 +2,7 @@ import { Button, Card } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import error404 from '../../assets/error404.svg';
 
-export const ErrorPage = () => {
+const ErrorPage = () => {
   const { t } = useTranslation();
 
   return (
@@ -20,3 +20,4 @@ export const ErrorPage = () => {
     </Card>
   );
 };
+export default ErrorPage;

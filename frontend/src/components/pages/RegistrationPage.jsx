@@ -1,8 +1,8 @@
 import { useTranslation } from 'react-i18next';
-import { RegistrationForm } from '../RegistrationForm';
+import RegistrationForm from '../RegistrationForm';
 import avatarReg from '../../assets/avatarReg.jpg';
 
-export const RegistrationPage = () => {
+const RegistrationPage = () => {
   const { t } = useTranslation();
 
   return (
@@ -24,3 +24,4 @@ export const RegistrationPage = () => {
     </div>
   );
 };
+export default RegistrationPage;

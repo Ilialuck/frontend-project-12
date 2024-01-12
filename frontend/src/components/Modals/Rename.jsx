@@ -9,7 +9,7 @@ import { closeModal } from '../../store/ModalSlice';
 import { useSocket } from '../../hooks';
 import { useChannelsNamesSchema } from '../../helpers';
 
-export const Rename = () => {
+const Rename = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const rollbar = useRollbar();
@@ -74,3 +74,4 @@ export const Rename = () => {
     </Modal>
   );
 };
+export default Rename;

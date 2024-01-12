@@ -10,7 +10,7 @@ import { useSocket } from '../../hooks';
 import { closeModal } from '../../store/ModalSlice';
 import { useChannelsNamesSchema } from '../../helpers';
 
-export const Add = () => {
+const Add = () => {
   const { t } = useTranslation();
   const socket = useSocket();
   const rollbar = useRollbar();
@@ -81,3 +81,4 @@ export const Add = () => {
     </Modal>
   );
 };
+export default Add;

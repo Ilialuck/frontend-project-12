@@ -2,11 +2,11 @@ import {
   Card, Col, Container, Row,
 } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
-import { LoginForm } from '../LoginForm.jsx';
+import LoginForm from '../LoginForm.jsx';
 import routes from '../../routes.js';
 import avatar from '../../assets/avatar.jpg';
 
-export const LoginPage = () => {
+const LoginPage = () => {
   const { t } = useTranslation();
   return (
     <Container fluid className="h-100 w-75">
@@ -34,3 +34,4 @@ export const LoginPage = () => {
     </Container>
   );
 };
+export default LoginPage;

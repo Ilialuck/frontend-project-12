@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, Dropdown } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 
-export const ChannelsList = ({
+const ChannelsList = ({
   channels, currentChannelId, handleChannelClick, handleRemoveChannel, handleRenameChannel,
 }) => {
   const { t } = useTranslation();
@@ -52,3 +52,4 @@ export const ChannelsList = ({
     </>
   );
 };
+export default ChannelsList;
