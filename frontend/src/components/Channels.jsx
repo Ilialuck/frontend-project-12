@@ -22,11 +22,9 @@ const Channels = () => {
     const focusedChannel = channels.find((channel) => channel.id === currentChannelId);
     const lastChannel = channels[channels.length - 1];
     if (channelsListRef.current) {
-      if (currentChannelId === 1) {
-        channelsListRef.current.scrollTop = 0;
-      } else if (focusedChannel && focusedChannel.id === lastChannel.id) {
-        channelsListRef.current.scrollTop = channelsListRef.current.scrollHeight;
-      }
+      channelsListRef.current.scrollTop = 0;
+    } else if (focusedChannel && focusedChannel.id === lastChannel.id) {
+      channelsListRef.current.scrollTop = channelsListRef.current.scrollHeight;
     }
   }, [channels, currentChannelId]);
 

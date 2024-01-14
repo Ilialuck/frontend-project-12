@@ -7,7 +7,7 @@ import { toast } from 'react-toastify';
 import { useRollbar } from '@rollbar/react';
 import { closeModal } from '../../store/ModalSlice';
 import { useSocket } from '../../hooks';
-import { useChannelsNamesSchema } from '../../helpers';
+import { useChannelsNamesSchema } from '../../helpers/validations';
 
 const Rename = () => {
   const { t } = useTranslation();

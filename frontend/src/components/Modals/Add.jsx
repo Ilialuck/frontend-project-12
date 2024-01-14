@@ -8,7 +8,7 @@ import { toast } from 'react-toastify';
 import filter from 'leo-profanity';
 import { useSocket } from '../../hooks';
 import { closeModal } from '../../store/ModalSlice';
-import { useChannelsNamesSchema } from '../../helpers';
+import { useChannelsNamesSchema } from '../../helpers/validations';
 
 const Add = () => {
   const { t } = useTranslation();

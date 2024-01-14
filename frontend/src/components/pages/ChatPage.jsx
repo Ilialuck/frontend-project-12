@@ -6,7 +6,7 @@ import { useAuth } from '../../hooks';
 import getModalComponent from '../Modals';
 import Channels from '../Channels';
 import Messages from '../Messages';
-import { getChannelsData } from '../../helpers';
+import getChannelsData from '../../helpers/requests';
 
 const ChatPage = () => {
   const dispatch = useDispatch();

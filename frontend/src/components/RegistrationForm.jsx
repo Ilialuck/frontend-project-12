@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { useRollbar } from '@rollbar/react';
 import { useEffect, useRef } from 'react';
 import { toast } from 'react-toastify';
-import { useRegistrationSchema } from '../helpers';
+import { useRegistrationSchema } from '../helpers/validations';
 import routes from '../routes';
 import { useAuth } from '../hooks';
 
@@ -59,7 +59,7 @@ const RegistrationForm = () => {
           placeholder={t('form.fields.username')}
           onChange={formik.handleChange}
           value={formik.values.username}
-          isInvalid={formik.errors.username}
+          isInvalid={formik.errors.username && formik.touched.username}
           ref={inputName}
         />
         <Form.Label htmlFor="username">{t('form.fields.username')}</Form.Label>
@@ -77,7 +77,7 @@ const RegistrationForm = () => {
           value={formik.values.password}
           autoComplete="new-password"
           onChange={formik.handleChange}
-          isInvalid={formik.errors.password}
+          isInvalid={formik.errors.password && formik.touched.password}
         />
         <Form.Label>{t('form.fields.password')}</Form.Label>
         <div className="invalid-tooltip">
@@ -94,7 +94,7 @@ const RegistrationForm = () => {
           placeholder={t('form.fields.passwordConfirmation')}
           value={formik.values.confirmPassword}
           onChange={formik.handleChange}
-          isInvalid={formik.errors.confirmPassword}
+          isInvalid={formik.errors.confirmPassword && formik.touched.confirmPassword}
         />
         <Form.Label>
           {t('form.fields.passwordConfirmation')}

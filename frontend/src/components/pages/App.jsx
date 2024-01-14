@@ -24,7 +24,7 @@ const App = () => {
           <Route path={routes.root} element={Redirect} />
           <Route path={routes.signup} element={<RegistrationPage />} />
           <Route path={routes.login} element={<LoginPage />} />
-          <Route path={routes.others} element={<ErrorPage />} />
+          <Route path="*" element={<ErrorPage />} />
         </Routes>
         <ToastContainer
           position="top-center"

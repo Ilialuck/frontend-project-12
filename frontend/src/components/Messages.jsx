@@ -2,6 +2,7 @@ import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { useRef, useEffect } from 'react';
 import MessagesForm from './MessagesForm';
+import { useAuth } from '../hooks';
 
 const Messages = () => {
   const messagesRef = useRef(null);
@@ -11,6 +12,7 @@ const Messages = () => {
   const { t } = useTranslation();
   const messages = useSelector((state) => state.messages.messages);
   const currentMessages = messages.filter((message) => message.channelId === currentChannelId);
+  const auth = useAuth();
 
   useEffect(() => {
     if (messagesRef.current && window.scrollY === 0) {
@@ -22,7 +24,7 @@ const Messages = () => {
   }, [messages]);
 
   const messagesList = currentMessages.map((message) => (
-    <div className="text-break mb-2" key={message.id}>
+    <div className={message.username === auth.user.username ? 'text-primary mb-2' : 'text-break mb-2'} key={message.id}>
       <b>{message.username}</b>
       {`: ${message.body}`}
     </div>

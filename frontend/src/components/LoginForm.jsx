@@ -2,11 +2,10 @@ import { Form, Button, FloatingLabel } from 'react-bootstrap';
 import { useState } from 'react';
 import { useFormik } from 'formik';
 import { useTranslation } from 'react-i18next';
-import { useRollbar } from '@rollbar/react';
 import { AxiosError } from 'axios';
 import { toast } from 'react-toastify';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { useLoginFormSchema } from '../helpers';
+import { useLoginFormSchema } from '../helpers/validations';
 import { useAuth } from '../hooks';
 import routes from '../routes';
 
@@ -14,7 +13,6 @@ const LoginForm = () => {
   const loginFormSchema = useLoginFormSchema();
   const { t } = useTranslation();
   const auth = useAuth();
-  const rollbar = useRollbar();
   const [authFailed, setAuthFailed] = useState(false);
 
   const navigate = useNavigate();
@@ -35,11 +33,10 @@ const LoginForm = () => {
       } catch (error) {
         if (error instanceof AxiosError && error.response.status === 401) {
           setAuthFailed(true);
+          auth.logOut();
           return;
         }
-
         toast.error(t('notifications.errors.loginFail'));
-        rollbar.error('LoginError', error);
       }
     },
   });
