@@ -14,6 +14,7 @@ const LoginForm = () => {
   const { t } = useTranslation();
   const auth = useAuth();
   const [authFailed, setAuthFailed] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -63,11 +64,18 @@ const LoginForm = () => {
           <Form.Control
             className={formik.errors.password && formik.touched.password ? 'is-invalid' : ''}
             required
-            type="password"
+            type={showPassword ? 'text' : 'password'}
             name="password"
             placeholder={t('form.fields.password')}
             onChange={formik.handleChange}
             isInvalid={authFailed}
+          />
+          <Form.Check
+            className="mb-2"
+            type="switch"
+            id="custom-switch"
+            label={t('form.fields.ShowPassword')}
+            onChange={() => setShowPassword((prev) => !prev)}
           />
           <Form.Control.Feedback type="invalid">{t('validations.loginFail')}</Form.Control.Feedback>
         </FloatingLabel>

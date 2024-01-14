@@ -4,7 +4,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useRollbar } from '@rollbar/react';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { toast } from 'react-toastify';
 import { useRegistrationSchema } from '../helpers/validations';
 import routes from '../routes';
@@ -23,6 +23,7 @@ const RegistrationForm = () => {
   const rollbar = useRollbar();
   const navigate = useNavigate();
   const registrationSchema = useRegistrationSchema();
+  const [showPassword, setShowPassword] = useState(false);
   const formik = useFormik({
     initialValues: {
       username: '',
@@ -70,7 +71,7 @@ const RegistrationForm = () => {
 
       <Form.Group className="form-floating mb-3" controlId="password">
         <Form.Control
-          type="password"
+          type={showPassword ? 'text' : 'password'}
           name="password"
           aria-describedby="passwordHelpBlock"
           placeholder={t('form.fields.password')}
@@ -78,6 +79,13 @@ const RegistrationForm = () => {
           autoComplete="new-password"
           onChange={formik.handleChange}
           isInvalid={formik.errors.password && formik.touched.password}
+        />
+        <Form.Check
+          className="mb-2"
+          type="switch"
+          id="custom-switch"
+          label={t('form.fields.ShowPassword')}
+          onChange={() => setShowPassword((prev) => !prev)}
         />
         <Form.Label>{t('form.fields.password')}</Form.Label>
         <div className="invalid-tooltip">

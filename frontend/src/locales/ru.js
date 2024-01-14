@@ -29,6 +29,7 @@ export default {
         username: 'Имя пользователя',
         username2: 'Ваш ник',
         password: 'Пароль',
+        ShowPassword: 'Показать / скрыть пароль',
         passwordConfirmation: 'Подтвердите пароль',
       },
     },
