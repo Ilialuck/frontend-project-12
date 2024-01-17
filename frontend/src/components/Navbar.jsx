@@ -19,7 +19,7 @@ const Navbar = () => {
         <NavbarComponent.Brand href="/"> Hexlet Chat </NavbarComponent.Brand>
         <ButtonGroup className="mb-2">
           {Object.keys(lngs).map((lng) => (
-            <Button key={lng} style={{ fontWeight: i18n.resolvedLanguage === lng ? 'bold' : 'normal' }} type="submit" onClick={() => i18n.changeLanguage(lng)}>
+            <Button key={lng} style={{ fontWeight: i18n.resolvedLanguage === lng ? 'bold' : 'normal' }} onClick={() => i18n.changeLanguage(lng)}>
               {lngs[lng].nativeName}
             </Button>
           ))}
