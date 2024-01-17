@@ -9,6 +9,8 @@ import { toast } from 'react-toastify';
 import { useRegistrationSchema } from '../helpers/validations';
 import routes from '../routes';
 import { useAuth } from '../hooks';
+import '../style.css';
+import Eye from '../assets/Eye.gif';
 
 const RegistrationForm = () => {
   const inputName = useRef(null);
@@ -80,13 +82,9 @@ const RegistrationForm = () => {
           onChange={formik.handleChange}
           isInvalid={formik.errors.password && formik.touched.password}
         />
-        <Form.Check
-          className="mb-2"
-          type="switch"
-          id="custom-switch"
-          label={t('form.fields.ShowPassword')}
-          onChange={() => setShowPassword((prev) => !prev)}
-        />
+        <Button className="eye-button" variant="link" onClick={() => setShowPassword((prev) => !prev)}>
+          <img src={Eye} alt="Button" />
+        </Button>
         <Form.Label>{t('form.fields.password')}</Form.Label>
         <div className="invalid-tooltip">
           {formik.errors.password}

@@ -8,6 +8,8 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { useLoginFormSchema } from '../helpers/validations';
 import { useAuth } from '../hooks';
 import routes from '../routes';
+import '../style.css';
+import Eye from '../assets/Eye.gif';
 
 const LoginForm = () => {
   const loginFormSchema = useLoginFormSchema();
@@ -70,13 +72,9 @@ const LoginForm = () => {
             onChange={formik.handleChange}
             isInvalid={authFailed}
           />
-          <Form.Check
-            className="mb-2"
-            type="switch"
-            id="custom-switch"
-            label={t('form.fields.ShowPassword')}
-            onChange={() => setShowPassword((prev) => !prev)}
-          />
+          <Button className="eye-button" variant="link" onClick={() => setShowPassword((prev) => !prev)}>
+            <img src={Eye} alt="Button" />
+          </Button>
           <Form.Control.Feedback type="invalid">{t('validations.loginFail')}</Form.Control.Feedback>
         </FloatingLabel>
       </Form.Group>
