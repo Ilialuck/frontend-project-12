@@ -15,6 +15,7 @@ import rollbarConfig from './rollbarConfig.js';
 const init = async () => {
   const i18n = i18next.createInstance();
   const socket = io();
+  const defaultLanguage = 'ru';
 
   socket.on('newMessage', (payload) => store.dispatch(addMessage(payload)));
   socket.on('newChannel', (payload) => store.dispatch(addChannel(payload)));
@@ -24,6 +25,7 @@ const init = async () => {
   await i18n
     .use(initReactI18next)
     .init({
+      lng: defaultLanguage,
       resources,
       fallbackLng: 'ru',
     });
