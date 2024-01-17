@@ -8,3 +8,9 @@
     border: none; 
     cursor: pointer; 
 }
+.lng-button {
+    float: left;
+    background: transparent;
+    border: none; 
+    cursor: pointer; 
+}
